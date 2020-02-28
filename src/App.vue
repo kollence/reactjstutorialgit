@@ -13,13 +13,16 @@
           src="./assets/img/Picture1.png"
         ></v-img>
       </v-toolbar-title>
-<v-row class="justify-space-between font-weight-black"><v-col class="col-sm-4 offset-sm-8">
-
-        <button @click="$vuetify.goTo('#about-me')" text class="mr-4">O NAMA</button>
-        <button @click="$vuetify.goTo('#smart-change')" text class="mr-4">SMART CHANGES</button>
-        <button @click="$vuetify.goTo('#smart-caffe')" text class="mr-4">SMART CAFFE</button>
-        <button @click="$vuetify.goTo('#usluge')" text class="mr-4">USLUGE</button>
-      </v-col></v-row>
+<v-row class="justify-space-between font-weight-black">
+  <v-col class="col-md-6 offset-md-5">
+        <v-btn @click="$vuetify.goTo('#about-me')" text>O NAMA</v-btn>
+        <v-btn @click="$vuetify.goTo('#smart-change')" text>SMART CHANGES</v-btn>
+        <v-btn @click="$vuetify.goTo('#smart-caffe')" text>SMART CAFFE</v-btn>
+        <v-btn @click="$vuetify.goTo('#lokacije')" text>LOKACIJE</v-btn>
+        <v-btn @click="$vuetify.goTo('#usluge')" text>USLUGE</v-btn>
+        <v-btn @click="$vuetify.goTo('#blog')" text>NAŠA BUDUĆNOST</v-btn>
+      </v-col>
+  </v-row>
     </v-app-bar>
 
     <v-content>
@@ -83,15 +86,36 @@
           </v-img>
         </v-row>
       </section>
-       <Onama></Onama>
-      <SmartChanges></SmartChanges>
-      <SmartCafe></SmartCafe>
-      <Lokacije></Lokacije>
-      <Usluge></Usluge>
-      <Intro></Intro>
+      <div>
+        <!-- <span
+                      :class="[$vuetify.breakpoint.smAndDown ? 'display-4': 'none']"
 
-      <About></About>
-
+                    >
+                    <v-btn fab dark large color="primary" fixed right bottom>
+        <v-icon dark>add</v-icon>
+    </v-btn>
+                    </span> -->
+        <Onama></Onama>
+        <SmartChanges></SmartChanges>
+        <SmartCafe></SmartCafe>
+        <Lokacije></Lokacije>
+        <Usluge></Usluge>
+        <About></About>
+        <Intro></Intro>
+                 <v-btn
+            v-scroll="onScroll"
+            v-show="fab"
+            fab
+            dark
+            fixed
+            bottom
+            right
+            color="black"
+            @click="toTop"
+          >
+            <v-icon>mdi-arrow-up</v-icon>
+          </v-btn>
+      </div>
       <v-sheet
         id="contact"
         color="#333333"
@@ -155,6 +179,7 @@ export default {
   },
   data () {
     return {
+      fab: false,
       windowSize: true,
       articles: [
         {
@@ -209,6 +234,16 @@ export default {
       expandOnHover: false,
       background: false
 
+    }
+  },
+  methods: {
+    onScroll (e) {
+      if (typeof window === 'undefined') return
+      const top = window.pageYOffset || e.target.scrollTop || 0
+      this.fab = top > 20
+    },
+    toTop () {
+      this.$vuetify.goTo(0)
     }
   },
   computed: {

@@ -1,7 +1,11 @@
 <template>
         <section id="blog">
         <div class="py-12"></div>
-
+<v-row class="text-center">
+            <v-col justify="center" class="text-center col-md-12 my-auto col-xs-12">
+              <h2 class="display-2 font-weight-bold mb-3">Misija, Vizija, Cilj</h2>
+            </v-col>
+          </v-row>
         <v-container>
           <h2 class="display-2 font-weight-bold mb-3 text-uppercase text-center"></h2>
 

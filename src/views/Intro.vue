@@ -1,6 +1,6 @@
 <template>
 <div>
-         <section id="intro">
+         <section id="intro" class="grey lighten-3">
         <div class="py-12"></div>
 
         <v-container class="text-center">
